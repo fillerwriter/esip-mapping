@@ -1,0 +1,37 @@
+<h2>CartoCSS</h2>
+
+<pre><code data-trim>
+#tornado {
+  line-width: 1;
+  line-color: #f6e10c;
+  line-opacity: 1;
+
+  [zoom > 5] {
+    line-width: 2; 
+  }
+  [zoom > 7] {
+    line-width: 4; 
+  }
+
+  [MAG = "1"] {
+    line-color: #feedde;
+    line-opacity: 1; 
+  }
+  [MAG = "2"] {
+    line-color: #fdbe85;
+    line-opacity: 1; 
+  }
+  [MAG = "3"] {
+    line-color: #fd8d3c;
+    line-opacity: 1; 
+  }
+  [MAG = "4"] {
+    line-color: #e6550d;
+    line-opacity: 1; 
+  }
+  [MAG = "5"] {
+    line-color: #a63603;
+    line-opacity: 1; 
+  }
+}
+</code></pre>

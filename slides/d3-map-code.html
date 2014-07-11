@@ -1,0 +1,23 @@
+<h2>D3 Map Code</h2>
+
+<pre><code data-trim>
+  var width = 900,
+  height = 510;
+
+  var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+  var path = d3.geo.path()
+    .projection(d3.geo.albersUsa());
+
+  d3.json("data/us.json", function(error, us) {
+  if (error) return console.error(error);
+
+  svg.selectAll(".state")
+      .data(topojson.feature(us, us.objects.states).features)
+    .enter().append("path")
+      .attr("class", function(d) { return "state"; })
+      .attr("d", path);
+  });
+</code></pre>

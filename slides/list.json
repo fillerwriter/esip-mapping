@@ -1,0 +1,25 @@
+[
+    "index.html",
+    "native-drupal-mapping-tools.html",
+    "tornadoes.html",
+    [
+        "tilemill.html",
+        "tilemill-intensity.html",
+        "tilemill-financial.html",
+        "tilemill-injuries.html"
+    ],
+    "cartocss.html",
+    [
+        "cartodb.html",
+        "cartodb-heat.html"
+    ],
+    [
+        "d3.html",
+        "d3-map-code.html",
+        "miso-project-d3chart.html"
+    ],
+    "data-processing-tools.html",
+    "resources.html",
+    "mugshot.html",
+    "phase2.html"
+]
