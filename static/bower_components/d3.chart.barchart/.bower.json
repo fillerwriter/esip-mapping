@@ -1,0 +1,14 @@
+{
+  "name": "d3.chart.barchart",
+  "homepage": "https://github.com/samselikoff/d3.chart.barchart",
+  "_release": "1588f73fad",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "1588f73fadd42125bcc31333e8b17137c8afb582"
+  },
+  "_source": "git://github.com/samselikoff/d3.chart.barchart.git",
+  "_target": "*",
+  "_originalSource": "samselikoff/d3.chart.barchart",
+  "_direct": true
+}

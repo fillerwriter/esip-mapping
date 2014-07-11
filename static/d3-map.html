@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Miso</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="bower_components/bootstrap.css/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <style>
+            .state {
+                stroke: #FFF;
+                stroke-width: 2px;
+                fill: #999;
+            }
+            .tornado {
+                stroke: #CCC;
+                stroke-width: 1px;
+            }
+
+            .tornado-magnitude-1 {
+                stroke: #feedde;
+            }
+
+            .tornado-magnitude-2 {
+                stroke: #fdbe85;
+            }
+
+            .tornado-magnitude-3 {
+                stroke: #fd8d3c;
+            }
+
+            .tornado-magnitude-4 {
+                stroke: #e6550d;
+            }
+
+            .tornado-magnitude-5 {
+                stroke: #a63603;
+            }
+        </style>
+    </head>
+    <body>
+        
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="bower_components/d3/d3.min.js"></script>
+        <script src="bower_components/topojson/topojson.js"></script>
+        <script>
+            var width = 900,
+                height = 510;
+
+            var svg = d3.select("body").append("svg")
+                .attr("width", width)
+                .attr("height", height);
+
+            var path = d3.geo.path()
+                .projection(d3.geo.albersUsa());
+
+            d3.json("data/us.json", function(error, us) {
+              if (error) return console.error(error);
+
+              svg.selectAll(".state")
+                  .data(topojson.feature(us, us.objects.states).features)
+                .enter().append("path")
+                  .attr("class", function(d) { return "state state-" + (d.id % 5); })
+                  .attr("d", path);
+            });
+
+            d3.json("data/tornado.geojson", function(error, tornadoes) {
+                console.log("tornadoes", tornadoes);
+                svg.selectAll(".tornado")
+                    .data(tornadoes.features)
+                .enter().append("path")
+                    .attr("class", function(d) {
+                        return "tornado tornado-magnitude-" + d.properties.MAG;
+                    })
+                    .attr("d", path);
+            });
+        </script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+    </body>
+</html>
